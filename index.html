@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css"> 
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css"> 
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+<script>
+$(document).ready(function() {
+  var t =  $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                title: 'All Wood Quotation'
+            },
+            {
+                extend: 'pdfHtml5',
+                title: 'All Wood Quotation'
+            }
+        ]
+    } );
+	
+	
+	
+    var counter = 1;
+ 
+    $('#addRow').on( 'click', function () {
+	
+	var val = "Bedroom"; 
+	if( document.getElementById("type").value == 'Bedroom Wardrobe cupboard'){
+		val = "Providing and Fixing of Bedroom Wardrobe cupboard with 19mm approved water proof plywood(BWP),  Shade lamination inside white lamination with drawer, coat hanger and neccesary hardware(Ebco,Godrej and sleek)";
+	}
+	if( document.getElementById("type").value == 'Wardrobe Loft'){
+		val = "Providing and Fixing of Wardrobe loft with 19mm approved water proof plywood(BWP),  Shade lamination inside white lamination with drawer, coat hanger and neccesary hardware(Ebco,Godrej and sleek)";
+	}
+	if( document.getElementById("type").value == 'Bedroom loft'){
+		val = "Providing and Fixing of Bedroom Wardrobe cupboard with 19mm approved water proof plywood(BWP),  Shade lamination inside white lamination with drawer, coat hanger and neccesary hardware(Ebco,Godrej and sleek)";
+	}
+	
+        t.row.add( [
+           val,
+            document.getElementById("fname").value,
+            document.getElementById("lname").value,
+            document.getElementById("fname").value * document.getElementById("lname").value,
+            document.getElementById("rate").value,
+			document.getElementById("fname").value * document.getElementById("lname").value *  document.getElementById("rate").value
+        ] ).draw( false );
+ 
+        counter++;
+    } );
+ 
+    // Automatically add a first row of data
+    //$('#addRow').click();
+	
+} );
+</script>
+</head>
+<body>
+
+<form>
+<label for="type">Type</label><br>
+<select id="type" name="type" size="3">
+  <option value="Bedroom Wardrobe cupboard">Bedroom Wardrobe cupboard</option>
+  <option value="Wardrobe Loft">Wardrobe Loft</option>
+  <option value="Bedroom loft">Bedroom loft</option>
+  <option value="Wardrobe book shelf">Wardrobe book shelf</option>
+  <option value="Study room loft">Study room loft</option>
+  <option value="Study table">Study table</option>
+  <option value="Pooja cupboard">Pooja cupboard</option>
+  <option value="Kitchen wall box">Kitchen wall box</option>
+  <option value="Kitchen bottom accesories">Kitchen bottom accesories</option>
+  <option value="Kitchen wash basin">Kitchen wash basin</option>
+  <option value="Hall TV unit">Hall TV unit</option>
+  <option value="Others">Others</option>
+</select><br><br>
+
+  <label for="fname">Height :</label><br>
+  <input type="text" id="fname" name="fname"><br>
+  <label for="lname">Width:</label><br>
+  <input type="text" id="lname" name="lname"><br>
+  <label for="rate">Rate:</label><br>
+  <input type="text" id="rate" name="rate"><br>
+</form>
+
+<button id="addRow">Add new row</button><br>
+
+<table id="example" class="display" style="width:100%">
+        <thead>
+		    <tr>
+                <th>Description</th>
+                <th>Height</th>
+                <th>Width</th>
+                <th>Total Sq.Ft</th>
+                <th>Rate per Sq.ft</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+                    </tbody>
+      
+    </table>
+
+</body>
+</html>
