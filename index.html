@@ -59,11 +59,68 @@ $(document).ready(function() {
     //$('#addRow').click();
 	
 } );
+
+
+</script>
+<script>
+ function myFunction() {
+  
+  const tableMath = document.getElementById('example');  
+var rc0 = 0;let rc1=0;
+for (let line=1; line < tableMath.rows.length; line++) {
+  rc0 = tableMath.rows[line].cells[5].textContent;
+ 
+  rc1 = Number(tableMath.rows[line].cells[5].textContent )+ Number(rc1);
+  
+  
+ 
+   
+ // tableMath.rows[line].cells[2].textContent = Number(rc0)+Number(rc1);
+
+ /* if ( tableMath.rows[line].cells[2].textContent != tableMath.rows[line].cells[3].textContent )	{
+    tableMath.rows[line].cells[3].classList.add('badAnswer')
+  }*/
+}
+//document.getElementById("total1").setAttribute('value',rc1);
+document.getElementById("total1").innerHTML = rc1;
+
+}
 </script>
 </head>
-<body>
+<body style="background-color:beige;">
 
+
+<!--
+<table border="1" align="center">
 <form>
+<tr><td><label for="type">Type</label></td>
+<td>
+<select id="type" name="type" size="3">
+  <option value="Bedroom Wardrobe cupboard">Bedroom Wardrobe cupboard</option>
+  <option value="Wardrobe Loft">Wardrobe Loft</option>
+  <option value="Bedroom loft">Bedroom loft</option>
+  <option value="Wardrobe book shelf">Wardrobe book shelf</option>
+  <option value="Study room loft">Study room loft</option>
+  <option value="Study table">Study table</option>
+  <option value="Pooja cupboard">Pooja cupboard</option>
+  <option value="Kitchen wall box">Kitchen wall box</option>
+  <option value="Kitchen bottom accesories">Kitchen bottom accesories</option>
+  <option value="Kitchen wash basin">Kitchen wash basin</option>
+  <option value="Hall TV unit">Hall TV unit</option>
+  <option value="Others">Others</option>
+</select>
+</td>
+</tr>
+<tr> <td><label for="fname">Height :</label></td><td><input type="text" id="fname" name="fname"></td></tr>
+<tr> <td><label for="lname">Width :</label></td><td><input type="text" id="lname" name="lname"></td></tr>
+<tr> <td><label for="rate">Rate:</label></td><td><input type="text" id="rate" name="rate"></td></tr>
+<tr/>
+<tr><td><button id="addRow">Add new row</button></td><td><button id="addSum" onclick="myFunction()">Final total is </button></td></tr>
+</form>
+</table>-->
+<br/>
+
+<form align="center">
 <label for="type">Type</label><br>
 <select id="type" name="type" size="3">
   <option value="Bedroom Wardrobe cupboard">Bedroom Wardrobe cupboard</option>
@@ -80,15 +137,18 @@ $(document).ready(function() {
   <option value="Others">Others</option>
 </select><br><br>
 
-  <label for="fname">Height :</label><br>
-  <input type="text" id="fname" name="fname"><br>
-  <label for="lname">Width:</label><br>
-  <input type="text" id="lname" name="lname"><br>
-  <label for="rate">Rate:</label><br>
-  <input type="text" id="rate" name="rate"><br>
+  <label for="fname">Height :</label>
+  <input type="text" id="fname" name="fname"><br></br>
+  <label for="lname">Width:</label>
+  <input type="text" id="lname" name="lname"><br></br>
+  <label for="rate">Rate:</label>
+  <input type="text" id="rate" name="rate"></br>
 </form>
+</br>
+<button id="addRow" align="center">Add new row</button><br></br>
 
-<button id="addRow">Add new row</button><br>
+
+
 
 <table id="example" class="display" style="width:100%">
         <thead>
@@ -107,8 +167,17 @@ $(document).ready(function() {
       
     </table>
  <br/>
-	<a href="https://api.whatsapp.com/send?phone=+919655051531&text=Hello Pattabi!" target="_blank">Click here to chat on WhatsApp</a>
-	<br/>
-	<a href="https://api.whatsapp.com/send?phone=+919940998313&text=Hello Sankar!" target="_blank">Click here to chat on WhatsApp</a>
+ <br/>
+ <button id="addSum" onclick="myFunction()" align="center">Final total is </button></br></br>
+ <h2 align="center"> Total value of this project is </h2>
+ <h1 id="total1" align="center"> 0 </h1>
+ <br/><br/>
+<table border="2" align="center">	
+<tr>
+<td><a href="https://api.whatsapp.com/send?phone=+919655051531&text=Hello Pattabi!" target="_blank">Click here to chat on WhatsApp Pattabi</a></td>
+</tr><tr>
+<td><a href="https://api.whatsapp.com/send?phone=+919940998313&text=Hello Sankar!" target="_blank">Click here to chat on WhatsApp Sankar</a></td>
+</tr>
+	<table/>
 </body>
 </html>
